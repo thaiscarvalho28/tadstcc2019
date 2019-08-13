@@ -1,25 +1,31 @@
 package com.thaistads.sispecort.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Fazenda {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idFazenda;
 	private String nomeFazenda;
 	private int numDeRegistro;
 	private String proprietario;
 	private String endereco;
-	private double quantAlqueires;
 	
 	public Fazenda() {	}
 
-	public Fazenda(Integer idFazenda, String nomeFazenda, int numDeRegistro, String proprietario, String endereco,
-			double quantAlqueires) {
+	public Fazenda(Integer idFazenda, String nomeFazenda, int numDeRegistro, 
+			String proprietario, String endereco) {
 		super();
 		this.idFazenda = idFazenda;
 		this.nomeFazenda = nomeFazenda;
 		this.numDeRegistro = numDeRegistro;
 		this.proprietario = proprietario;
 		this.endereco = endereco;
-		this.quantAlqueires = quantAlqueires;
 	}
 
 	public Integer getIdFazenda() {
@@ -61,14 +67,5 @@ public class Fazenda {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-
-	public double getQuantAlqueires() {
-		return quantAlqueires;
-	}
-
-	public void setQuantAlqueires(double quantAlqueires) {
-		this.quantAlqueires = quantAlqueires;
-	}
-	
 	
 }
