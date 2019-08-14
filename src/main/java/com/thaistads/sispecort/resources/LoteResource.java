@@ -1,28 +1,27 @@
 package com.thaistads.sispecort.resources;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.thaistads.sispecort.domain.Lote;
+import com.thaistads.sispecort.services.LoteService;
 
 @RestController
 @RequestMapping(value="/lotes")
 public class LoteResource {
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public List<Lote> listar() {
+	@Autowired
+	LoteService service;
+	
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Lote> find(@PathVariable int id) {
+		Lote objLote = service.buscar(id);
+		return ResponseEntity.ok().body(objLote);
 		
-		Lote lote1 = new Lote(1, 24.2, "ha", "Para engorda", 28, "Brachiara Decumbens");
-		Lote lote2 = new Lote(2, 48.4, "ha", "Para cria", 55, "Brachiara Decumbens");
-		
-		List<Lote> listaLote = new ArrayList<>();
-		listaLote.add(lote1);
-		listaLote.add(lote2);
-		
-		return listaLote;
 	}
 	
 }

@@ -13,7 +13,8 @@ public class Lote implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int numLote;
+	private Integer id;
+	private String codigoLote;
 	private double tamanhoLote;
 	private String unidadeMedida;
 	private String finalidadeLote;
@@ -25,10 +26,11 @@ public class Lote implements Serializable {
 
 	
 
-	public Lote(int numLote, double tamanhoLote, String unidadeMedida, String finalidadeLote, int capacidadeDeGado,
+	public Lote(Integer id, String codigoLote, double tamanhoLote, String unidadeMedida, String finalidadeLote, int capacidadeDeGado,
 			String tipoPastagem) {
 		super();
-		this.numLote = numLote;
+		this.id = id;
+		this.codigoLote = codigoLote;
 		this.tamanhoLote = tamanhoLote;
 		this.unidadeMedida = unidadeMedida;
 		this.finalidadeLote = finalidadeLote;
@@ -37,12 +39,22 @@ public class Lote implements Serializable {
 	}
 
 
-	public int getNumLote() {
-		return numLote;
+	
+	
+	public Integer getId() {
+		return id;
 	}
 
-	public void setNumLote(int numLote) {
-		this.numLote = numLote;
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getCodigoLote() {
+		return codigoLote;
+	}
+
+	public void setCodigoLotee(String codigoLote) {
+		this.codigoLote = codigoLote;
 	}
 
 	public double getTamanhoLote() {
@@ -98,16 +110,20 @@ public class Lote implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + capacidadeDeGado;
+		result = prime * result + ((codigoLote == null) ? 0 : codigoLote.hashCode());
 		result = prime * result + ((finalidadeLote == null) ? 0 : finalidadeLote.hashCode());
-		result = prime * result + numLote;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(pesoTotalDoLote);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(tamanhoLote);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((tipoPastagem == null) ? 0 : tipoPastagem.hashCode());
+		result = prime * result + ((unidadeMedida == null) ? 0 : unidadeMedida.hashCode());
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -120,12 +136,20 @@ public class Lote implements Serializable {
 		Lote other = (Lote) obj;
 		if (capacidadeDeGado != other.capacidadeDeGado)
 			return false;
+		if (codigoLote == null) {
+			if (other.codigoLote != null)
+				return false;
+		} else if (!codigoLote.equals(other.codigoLote))
+			return false;
 		if (finalidadeLote == null) {
 			if (other.finalidadeLote != null)
 				return false;
 		} else if (!finalidadeLote.equals(other.finalidadeLote))
 			return false;
-		if (numLote != other.numLote)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (Double.doubleToLongBits(pesoTotalDoLote) != Double.doubleToLongBits(other.pesoTotalDoLote))
 			return false;
@@ -136,10 +160,13 @@ public class Lote implements Serializable {
 				return false;
 		} else if (!tipoPastagem.equals(other.tipoPastagem))
 			return false;
+		if (unidadeMedida == null) {
+			if (other.unidadeMedida != null)
+				return false;
+		} else if (!unidadeMedida.equals(other.unidadeMedida))
+			return false;
 		return true;
 	}
-	
-	
-	
-	
+
+		
 }
