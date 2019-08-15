@@ -1,33 +1,27 @@
 package com.thaistads.sispecort.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Fazenda {
+public class Fazenda{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idFazenda;
 	private String nomeFazenda;
 	private int numDeRegistro;
 	private String proprietario;
 	private String endereco;
+	private List<Lote> lotes;
 	
-	public Fazenda() {	}
-
-	public Fazenda(Integer idFazenda, String nomeFazenda, int numDeRegistro, 
-			String proprietario, String endereco) {
-		super();
-		this.idFazenda = idFazenda;
-		this.nomeFazenda = nomeFazenda;
-		this.numDeRegistro = numDeRegistro;
-		this.proprietario = proprietario;
-		this.endereco = endereco;
-	}
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getIdFazenda() {
 		return idFazenda;
 	}
@@ -66,6 +60,16 @@ public class Fazenda {
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "fazenda")
+	public List<Lote> getLotes() {
+		return lotes;
+	}
+
+
+	public void setLotes(List<Lote> lotes) {
+		this.lotes = lotes;
 	}
 	
 }

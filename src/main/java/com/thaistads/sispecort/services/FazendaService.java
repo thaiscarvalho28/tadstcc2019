@@ -10,17 +10,16 @@ import com.thaistads.sispecort.repositories.FazendaRepository;
 
 @Service
 public class FazendaService {
-
-	/*
-	 * Quando se declara uma dependencia dentro de uma classe e usa a anotacao @Autowired, a dependencia
-	 * sera automaticamento instanciada pelo Spring. Atraves do mecanismo de inecao de dependencia,
-	 * ou inversao de controle.
-	 */
+	
 	@Autowired
-	private FazendaRepository repository;
+	private FazendaRepository fazendaRepository;
 	
 	public Fazenda buscar(Integer id) {
-		Optional<Fazenda> objFazenda = repository.findById(id);
+		Optional<Fazenda> objFazenda = fazendaRepository.findById(id);
 		return objFazenda.orElse(null);
+	}
+	
+	public Fazenda cadastrarFazenda(Fazenda fazenda) {
+		return fazendaRepository.save(fazenda);
 	}
 }

@@ -11,10 +11,15 @@ import com.thaistads.sispecort.repositories.LoteRepository;
 public class LoteService {
 	
 	@Autowired
-	private LoteRepository repository;
+	private LoteRepository loteRepository;
 	
 	public Lote buscar(Integer id){
-		Optional<Lote> objLote = repository.findById(id);
+		Optional<Lote> objLote = loteRepository.findById(id);
 		return objLote.orElse(null);
 	}
+	
+	public Lote cadastrarLote(Lote lote) {
+		return loteRepository.save(lote);
+	}
+	
 }
