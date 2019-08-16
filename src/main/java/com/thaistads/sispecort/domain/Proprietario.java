@@ -2,32 +2,32 @@ package com.thaistads.sispecort.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Proprietario extends PessoaFisica{
-	
+
 	private double prolabore;
-	private String loginAdmin;
-	private String senha;
-	 
+	private Fazenda fazenda;
+	
 	@Column
 	public double getProlabore() {
 		return prolabore;
 	}
+	
 	public void setProlabore(double prolabore) {
 		this.prolabore = prolabore;
 	}
-	public String getLoginAdmin() {
-		return loginAdmin;
+
+	@OneToOne(mappedBy = "proprietario")
+	public Fazenda getFazenda() {
+		return fazenda;
 	}
-	public void setLoginAdmin(String loginAdmin) {
-		this.loginAdmin = loginAdmin;
+
+	public void setFazenda(Fazenda fazenda) {
+		this.fazenda = fazenda;
 	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	 
+	
+	
+
 }

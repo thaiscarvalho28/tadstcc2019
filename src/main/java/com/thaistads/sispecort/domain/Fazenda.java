@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Fazenda{
@@ -15,7 +16,7 @@ public class Fazenda{
 	private Integer idFazenda;
 	private String nomeFazenda;
 	private int numDeRegistro;
-	private String proprietario;
+	private Proprietario proprietario;
 	private String endereco;
 	private List<Lote> lotes;
 	
@@ -46,11 +47,12 @@ public class Fazenda{
 		this.numDeRegistro = numDeRegistro;
 	}
 
-	public String getProprietario() {
+	@OneToOne()
+	public Proprietario getProprietario() {
 		return proprietario;
 	}
 
-	public void setProprietario(String proprietario) {
+	public void setProprietario(Proprietario proprietario) {
 		this.proprietario = proprietario;
 	}
 
