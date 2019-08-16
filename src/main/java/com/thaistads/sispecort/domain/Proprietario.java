@@ -1,5 +1,6 @@
 package com.thaistads.sispecort.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
@@ -19,7 +20,7 @@ public class Proprietario extends PessoaFisica{
 		this.prolabore = prolabore;
 	}
 
-	@OneToOne(mappedBy = "proprietario")
+	@OneToOne(cascade = CascadeType.REMOVE, mappedBy = "proprietario")
 	public Fazenda getFazenda() {
 		return fazenda;
 	}

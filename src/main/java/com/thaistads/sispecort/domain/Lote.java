@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity 
 public class Lote{
@@ -89,6 +91,7 @@ public class Lote{
 	}
 	
 	@ManyToOne()
+	@JsonIgnore
 	public Fazenda getFazenda() {
 		return fazenda;
 	}

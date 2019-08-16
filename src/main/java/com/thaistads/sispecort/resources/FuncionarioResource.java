@@ -10,35 +10,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.thaistads.sispecort.domain.Proprietario;
-import com.thaistads.sispecort.services.ProprietarioService;
+import com.thaistads.sispecort.domain.Funcionario;
+import com.thaistads.sispecort.services.FuncionarioService;
 
 @RestController
-public class ProprietarioResource {
+public class FuncionarioResource {
 	
-	private final String URL = "/proprietario";
+	private final String URL = "/funcionario";
 	
 	@Autowired
-	ProprietarioService proprietarioService;
+	FuncionarioService funcionarioService;
 	
 	//############### Cadastrar ###############
-	@RequestMapping(value = URL + "/cadastpropi", method = RequestMethod.POST,
+	@RequestMapping(value = URL + "/cadastfuncio", method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> cadastrarProprietario(@RequestBody Proprietario proprietario){
+	public ResponseEntity<?> cadastrarFuncionario(@RequestBody Funcionario funcionario){
 		
-		Proprietario proprietarioCadastrado = proprietarioService.cadastrarProprietario(proprietario);
+		Funcionario funcionarioCadastrado = funcionarioService.cadastrarFuncionario(funcionario);
 		
-		if(proprietarioCadastrado == null) {
+		if(funcionarioCadastrado == null) {
 			return new ResponseEntity(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity(HttpStatus.CREATED);
 	}
 	
 	//############### Buscar ###############
-	@RequestMapping(value = URL + "/buscarpropri/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Proprietario> buscarProprietario(@PathVariable int id) {
-		Proprietario objProprietario = proprietarioService.buscar(id);
-		return ResponseEntity.ok().body(objProprietario);
+	@RequestMapping(value = URL + "/buscarfuncio/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Funcionario> buscarFuncionario(@PathVariable int id) {
+		Funcionario objFuncionario = funcionarioService.buscar(id);
+		return ResponseEntity.ok().body(objFuncionario);
 		
 	}
 	
