@@ -1,5 +1,6 @@
 package com.thaistads.sispecort.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 
 @Entity 
@@ -90,8 +93,8 @@ public class Lote{
 		this.pesoTotalDoLote = pesoTotalDoLote;
 	}
 	
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@ManyToOne()
-	@JsonIgnore
 	public Fazenda getFazenda() {
 		return fazenda;
 	}

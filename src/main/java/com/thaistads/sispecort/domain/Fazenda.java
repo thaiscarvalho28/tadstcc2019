@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 public class Fazenda{
@@ -49,8 +51,8 @@ public class Fazenda{
 		this.numDeRegistro = numDeRegistro;
 	}
 
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@OneToOne()
-	@JsonIgnore
 	public Proprietario getProprietario() {
 		return proprietario;
 	}
