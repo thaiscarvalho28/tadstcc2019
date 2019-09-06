@@ -1,57 +1,59 @@
-//package com.thaistads.sispecort.domain;
-//
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//
-//@Entity
-//public class Nascimento extends GadoBovino{
-//
-//	private GadoBovino numeroBrincoMae;
-//	private GadoBovino corBrincoMae;
-//	private GadoBovino numeroBrincoPai;
-//	private GadoBovino corBrincoPai;
-//	private Lote loteNascimento;
-//	
-//	@Column
-//	public GadoBovino getNumeroBrincoMae() {
-//		return numeroBrincoMae;
-//	}
-//	
-//	public void setNumeroBrincoMae(GadoBovino numeroBrincoMae) {
-//		this.numeroBrincoMae = numeroBrincoMae;
-//	}
-//	
-//	public GadoBovino getCorBrincoMae() {
-//		return corBrincoMae;
-//	}
-//	
-//	public void setCorBrincoMae(GadoBovino corBrincoMae) {
-//		this.corBrincoMae = corBrincoMae;
-//	}
-//	
-//	public GadoBovino getNumeroBrincoPai() {
-//		return numeroBrincoPai;
-//	}
-//	
-//	public void setNumeroBrincoPai(GadoBovino numeroBrincoPai) {
-//		this.numeroBrincoPai = numeroBrincoPai;
-//	}
-//	
-//	public GadoBovino getCorBrincoPai() {
-//		return corBrincoPai;
-//	}
-//	
-//	public void setCorBrincoPai(GadoBovino corBrincoPai) {
-//		this.corBrincoPai = corBrincoPai;
-//	}
-//	
-//	public Lote getLoteNascimento() {
-//		return loteNascimento;
-//	}
-//	
-//	public void setLoteNascimento(Lote loteNascimento) {
-//		this.loteNascimento = loteNascimento;
-//	}
-//	
-//	
-//}
+package com.thaistads.sispecort.domain;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Nascimento{
+
+	private Integer idNascimento;
+	private GadoBovino idMae;
+	private GadoBovino idPai;
+	
+	private GadoBovino idBezerro;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Integer getIdNascimento() {
+		return idNascimento;
+	}
+
+	public void setIdNascimento(Integer idNascimento) {
+		this.idNascimento = idNascimento;
+	}
+
+	@OneToOne()
+	@JoinColumn(name = "id_mae", unique = true)
+	public GadoBovino getIdMae() {
+		return idMae;
+	}
+
+	public void setIdMae(GadoBovino idMae) {
+		this.idMae = idMae;
+	}
+
+	@OneToOne()
+	@JoinColumn(name = "id_pai", unique = true)
+	public GadoBovino getIdPai() {
+		return idPai;
+	}
+
+	public void setIdPai(GadoBovino idPai) {
+		this.idPai = idPai;
+	}
+
+	@OneToOne()
+	@JoinColumn(name = "id_bezerro", unique = true)
+	public GadoBovino getIdBezerro() {
+		return idBezerro;
+	}
+
+	public void setIdBezerro(GadoBovino idBezerro) {
+		this.idBezerro = idBezerro;
+	}
+		
+}

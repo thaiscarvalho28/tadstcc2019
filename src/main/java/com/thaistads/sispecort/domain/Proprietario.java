@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Proprietario extends PessoaFisica{
+public class Proprietario extends Pessoa{
 
 	private double prolabore;
 	private Fazenda fazenda;

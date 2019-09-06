@@ -1,20 +1,24 @@
 package com.thaistads.sispecort.domain;
 
+
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 
 @Entity 
 public class Lote{
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String codigoLote;
 	private double tamanhoLote;
@@ -23,12 +27,14 @@ public class Lote{
 	private int capacidadeDeGado;
 	private String tipoPastagem;
 	private double pesoTotalDoLote;
+	@JsonProperty(access = Access.WRITE_ONLY)
+	@ManyToOne()
 	private Fazenda fazenda;
 	
-	//private List<Gado> gados = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "lote")
+	private List<GadoBovino> gado_bovino;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	public Integer getId() {
 		return id;
 	}
@@ -93,8 +99,7 @@ public class Lote{
 		this.pesoTotalDoLote = pesoTotalDoLote;
 	}
 	
-	@JsonProperty(access = Access.WRITE_ONLY)
-	@ManyToOne()
+	
 	public Fazenda getFazenda() {
 		return fazenda;
 	}
@@ -107,12 +112,16 @@ public class Lote{
 		this.codigoLote = codigoLote;
 	}
 	
-	/*public List<Gado> getGados() {
-		return gados;
+	
+	public List<GadoBovino> getGado_bovino() {
+		return gado_bovino;
 	}
 
-	public void setGados(List<Gado> gados) {
-		this.gados = gados;
-	}*/
+	public void setGado_bovino(List<GadoBovino> gado_bovino) {
+		this.gado_bovino = gado_bovino;
+	}
+	
+	
+	
 	
 }

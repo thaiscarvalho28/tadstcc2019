@@ -2,15 +2,21 @@ package com.thaistads.sispecort.domain;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
-@MappedSuperclass
-public abstract class GadoBovino {
+@Entity
+public class GadoBovino {
 	
-	private Integer idGado;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
 	private int numeroBrinco;
 	private String corBrinco;
 	private String categoriaAnimal;
@@ -19,18 +25,27 @@ public abstract class GadoBovino {
 	private String raca;
 	private String pelagem;
 	private Date dataNascimento;
-	private Lote loteResidente;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer getIdGado() {
-		return idGado;
+	@ManyToOne()
+	private Lote lote;
+	
+	public Integer getId() {
+		return id;
 	}
-	
-	public void setIdGado(Integer idGado) {
-		this.idGado = idGado;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
+
 	
+	public Lote getLote() {
+		return lote;
+	}
+
+	public void setLote(Lote lote) {
+		this.lote = lote;
+	}
+
 	public int getNumeroBrinco() {
 		return numeroBrinco;
 	}
@@ -94,13 +109,17 @@ public abstract class GadoBovino {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+
+//	@ManyToOne
+//	public Lote getLote() {
+//		return lote;
+//	}
+//
+//	public void setLote(Lote lote) {
+//		this.lote = lote;
+//	}
 	
-	public Lote getLoteResidente() {
-		return loteResidente;
-	}
 	
-	public void setLoteResidente(Lote loteResidente) {
-		this.loteResidente = loteResidente;
-	}
+	
 	
 }

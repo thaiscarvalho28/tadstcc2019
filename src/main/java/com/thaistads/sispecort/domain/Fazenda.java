@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 @Entity
 public class Fazenda{
 	
+	
 	private Integer idFazenda;
 	private String nomeFazenda;
 	private int numDeRegistro;

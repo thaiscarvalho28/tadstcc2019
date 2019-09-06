@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-public class Funcionario extends PessoaFisica {
+public class Funcionario extends Pessoa {
 	
     private String cargo;
     private String dataContratacao;
