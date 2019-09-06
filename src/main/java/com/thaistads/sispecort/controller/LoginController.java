@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.thaistads.sispecort.domain.Login;
-import com.thaistads.sispecort.domain.Lote;
 import com.thaistads.sispecort.services.LoginService;
-import com.thaistads.sispecort.services.LoteService;
 
 @RestController
 public class LoginController {
@@ -31,9 +29,9 @@ public class LoginController {
 		Login loginAdminCadastrado = loginService.cadastrar(login);
 		
 		if(loginAdminCadastrado == null) {
-			return new ResponseEntity(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity(HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	//############### Buscar ###############
@@ -44,6 +42,14 @@ public class LoginController {
 		
 	}
 	
-	//############### Desativar ###############
+	//############### Autenticar ###############
+	@RequestMapping(value = "URL" + "/autelogin", method = RequestMethod.POST,
+			consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> autenticar(@RequestBody Login login) {
+		if(login.getEmail().isEmpty() || login.getSenha().isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+		}
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 	
 }

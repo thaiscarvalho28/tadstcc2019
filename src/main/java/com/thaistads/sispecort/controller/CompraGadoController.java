@@ -10,35 +10,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.thaistads.sispecort.domain.Nascimento;
-import com.thaistads.sispecort.services.NascimentoService;
+import com.thaistads.sispecort.domain.CompraGado;
+import com.thaistads.sispecort.services.CompraGadoService;
 
 @RestController
-public class NascimentoController {
+public class CompraGadoController {
 	
-	private final String URL = "/nasc";
+	private final String URL = "/compgado";
 	
 	@Autowired
-	NascimentoService nascService;
+	CompraGadoService compGadoService;
 	
 	//############### Cadastrar ###############
-	@RequestMapping(value = URL + "/cadastnasc", method = RequestMethod.POST,
+	@RequestMapping(value = URL + "/cadastcompgado", method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> cadastrarNascimento(@RequestBody Nascimento nasc){
+	public ResponseEntity<?> cadastrarCompraGado(@RequestBody CompraGado compGado){
 		
-		Nascimento nascCadastrado = nascService.cadastrar(nasc);
+		CompraGado compGadoCadastrada = compGadoService.cadastrar(compGado);
 		
-		if(nascCadastrado == null) {
+		if(compGadoCadastrada == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>(HttpStatus.CREATED);
+		//Implementar saida no caixa automatico
 	}
 	
 	//############### Buscar ###############
-	@RequestMapping(value = URL + "/buscarnasc/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Nascimento> buscarNascimento(@PathVariable int id) {
-		Nascimento objNasc = nascService.buscar(id);
-		return ResponseEntity.ok().body(objNasc);
+	@RequestMapping(value = URL + "/buscarcompgado/{id}", method = RequestMethod.GET)
+	public ResponseEntity<CompraGado> buscarNascimento(@PathVariable int id) {
+		CompraGado objCompGado = compGadoService.buscar(id);
+		return ResponseEntity.ok().body(objCompGado);
 		
 	}
 	

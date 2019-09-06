@@ -10,35 +10,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.thaistads.sispecort.domain.Nascimento;
-import com.thaistads.sispecort.services.NascimentoService;
+import com.thaistads.sispecort.domain.GadoBovino;
+import com.thaistads.sispecort.services.GadoBovinoService;
 
 @RestController
-public class NascimentoController {
+public class GadoBovinoController {
 	
-	private final String URL = "/nasc";
+	private final String URL = "/gadobov";
 	
 	@Autowired
-	NascimentoService nascService;
+	GadoBovinoService gadoBovinoService;
 	
 	//############### Cadastrar ###############
-	@RequestMapping(value = URL + "/cadastnasc", method = RequestMethod.POST,
+	@RequestMapping(value = URL + "/cadastcompgado", method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> cadastrarNascimento(@RequestBody Nascimento nasc){
+	public ResponseEntity<?> cadastrarGadoBovino(@RequestBody GadoBovino gadoBov){
 		
-		Nascimento nascCadastrado = nascService.cadastrar(nasc);
+		GadoBovino gadoBovCadastrada = gadoBovinoService.cadastrar(gadoBov);
 		
-		if(nascCadastrado == null) {
+		if(gadoBovCadastrada == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	//############### Buscar ###############
-	@RequestMapping(value = URL + "/buscarnasc/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Nascimento> buscarNascimento(@PathVariable int id) {
-		Nascimento objNasc = nascService.buscar(id);
-		return ResponseEntity.ok().body(objNasc);
+	@RequestMapping(value = URL + "/buscarcompgado/{id}", method = RequestMethod.GET)
+	public ResponseEntity<GadoBovino> buscarGadoBovino(@PathVariable int id) {
+		GadoBovino objGadoBov = gadoBovinoService.buscar(id);
+		return ResponseEntity.ok().body(objGadoBov);
 		
 	}
 	

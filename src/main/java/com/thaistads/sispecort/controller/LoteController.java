@@ -29,9 +29,9 @@ public class LoteController {
 		Lote loteCadastrado = loteService.cadastrarLote(lote);
 		
 		if(loteCadastrado == null) {
-			return new ResponseEntity(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity(HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	//############### Buscar ###############

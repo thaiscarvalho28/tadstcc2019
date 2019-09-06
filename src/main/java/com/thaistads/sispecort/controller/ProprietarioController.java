@@ -29,9 +29,9 @@ public class ProprietarioController {
 		Proprietario proprietarioCadastrado = proprietarioService.cadastrarProprietario(proprietario);
 		
 		if(proprietarioCadastrado == null) {
-			return new ResponseEntity(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity(HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	//############### Buscar ###############

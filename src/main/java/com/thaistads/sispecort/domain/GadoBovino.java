@@ -6,9 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 
 @Entity
 public class GadoBovino {
@@ -37,7 +35,6 @@ public class GadoBovino {
 		this.id = id;
 	}
 
-	
 	public Lote getLote() {
 		return lote;
 	}
@@ -109,17 +106,6 @@ public class GadoBovino {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-
-//	@ManyToOne
-//	public Lote getLote() {
-//		return lote;
-//	}
-//
-//	public void setLote(Lote lote) {
-//		this.lote = lote;
-//	}
-	
-	
 	
 	
 }

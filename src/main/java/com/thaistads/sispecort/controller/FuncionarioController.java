@@ -29,9 +29,9 @@ public class FuncionarioController {
 		Funcionario funcionarioCadastrado = funcionarioService.cadastrarFuncionario(funcionario);
 		
 		if(funcionarioCadastrado == null) {
-			return new ResponseEntity(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity(HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	//############### Buscar ###############
