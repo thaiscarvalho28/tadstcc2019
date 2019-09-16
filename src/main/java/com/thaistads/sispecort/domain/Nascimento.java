@@ -1,5 +1,7 @@
 package com.thaistads.sispecort.domain;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,14 +12,24 @@ import javax.persistence.OneToOne;
 @Entity
 public class Nascimento{
 
-	private Integer idNascimento;
-	private GadoBovino idMae;
-	private GadoBovino idPai;
-	
-	private GadoBovino idBezerro;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer idNascimento;
+	
+	@OneToOne()
+	@JoinColumn(name = "id_mae", unique = true)
+	private GadoBovino idMae;
+	
+	@OneToOne()
+	@JoinColumn(name = "id_pai", unique = true)
+	private GadoBovino idPai;
+	
+	private Date dataNascimento;
+	
+	@OneToOne()
+	@JoinColumn(name = "id_bezerro", unique = true)
+	private GadoBovino idBezerro;
+	
 	public Integer getIdNascimento() {
 		return idNascimento;
 	}
@@ -26,8 +38,6 @@ public class Nascimento{
 		this.idNascimento = idNascimento;
 	}
 
-	@OneToOne()
-	@JoinColumn(name = "id_mae", unique = true)
 	public GadoBovino getIdMae() {
 		return idMae;
 	}
@@ -36,8 +46,6 @@ public class Nascimento{
 		this.idMae = idMae;
 	}
 
-	@OneToOne()
-	@JoinColumn(name = "id_pai", unique = true)
 	public GadoBovino getIdPai() {
 		return idPai;
 	}
@@ -45,9 +53,15 @@ public class Nascimento{
 	public void setIdPai(GadoBovino idPai) {
 		this.idPai = idPai;
 	}
+	
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
 
-	@OneToOne()
-	@JoinColumn(name = "id_bezerro", unique = true)
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
 	public GadoBovino getIdBezerro() {
 		return idBezerro;
 	}
@@ -55,5 +69,5 @@ public class Nascimento{
 	public void setIdBezerro(GadoBovino idBezerro) {
 		this.idBezerro = idBezerro;
 	}
-		
+	
 }

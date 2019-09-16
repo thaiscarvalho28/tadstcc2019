@@ -1,27 +1,31 @@
 package com.thaistads.sispecort.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class CompraGado{
 	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idCompraGado;
 	private float precoCompra;
 	private float valorFrete;
 	private Date dataCompra;
-	private GadoBovino idGadoComprado;
+	
+	@OneToMany()
+	@JoinColumn(name = "id_gado_comprado", unique = true)
+	private List<GadoBovino> idGadoComprado;
+	
 	private String anotacoes;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getIdCompraGado() {
 		return idCompraGado;
 	}
@@ -54,13 +58,11 @@ public class CompraGado{
 		this.dataCompra = dataCompra;
 	}
 
-	@OneToOne()
-	@JoinColumn(name = "id_gado_comprado", unique = true)
-	public GadoBovino getIdGadoComprado() {
+	public List<GadoBovino> getIdGadoComprado() {
 		return idGadoComprado;
 	}
 
-	public void setIdGadoComprado(GadoBovino idGadoComprado) {
+	public void setIdGadoComprado(List<GadoBovino> idGadoComprado) {
 		this.idGadoComprado = idGadoComprado;
 	}
 

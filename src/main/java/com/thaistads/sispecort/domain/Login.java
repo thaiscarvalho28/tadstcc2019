@@ -8,15 +8,15 @@ import javax.persistence.Id;
 @Entity
 public class Login {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idLogin;
     private String nomeCompleto;
     private String email;
     private String telefone;
     private String nomeUser;
     private String senha;
-    
-    @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+   
 	public Integer getIdLogin() {
 		return idLogin;
 	}

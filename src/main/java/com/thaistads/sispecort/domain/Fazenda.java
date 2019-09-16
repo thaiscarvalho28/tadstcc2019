@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -16,17 +16,22 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 @Entity
 public class Fazenda{
 	
-	
-	private Integer idFazenda;
-	private String nomeFazenda;
-	private int numDeRegistro;
-	private Proprietario proprietario;
-	private String endereco;
-	private List<Lote> lotes;
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer idFazenda;
+	
+	private String nomeFazenda;
+	private int numDeRegistro;
+	
+	@ManyToOne()
+	private Proprietario proprietario;
+	
+	private String endereco;
+		
+	@ManyToOne(targetEntity = Lote.class)
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private List<Lote> lotes;
+
 	public Integer getIdFazenda() {
 		return idFazenda;
 	}
@@ -51,8 +56,6 @@ public class Fazenda{
 		this.numDeRegistro = numDeRegistro;
 	}
 
-	@JsonProperty(access = Access.WRITE_ONLY)
-	@OneToOne()
 	public Proprietario getProprietario() {
 		return proprietario;
 	}

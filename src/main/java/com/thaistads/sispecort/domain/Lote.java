@@ -17,9 +17,11 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity 
 public class Lote{
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String codigoLote;
 	private double tamanhoLote;
 	private String unidadeMedida;
@@ -27,8 +29,9 @@ public class Lote{
 	private int capacidadeDeGado;
 	private String tipoPastagem;
 	private double pesoTotalDoLote;
-	@JsonProperty(access = Access.WRITE_ONLY)
+	
 	@ManyToOne()
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private Fazenda fazenda;
 	
 	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "lote")

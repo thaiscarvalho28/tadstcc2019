@@ -8,17 +8,15 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class Pessoa {
 	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idPessoa;
     private String nomeCompleto;
     private String email;
     private String telefone;
     private String dataNascimento;
     private String endereco;
-    private String nomeUsuario;
-    private String senha;
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getIdPessoa() {
 		return idPessoa;
 	}
@@ -65,24 +63,6 @@ public class Pessoa {
 	
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
-	}
-	
-	public String getNomeUsuario() {
-		return nomeUsuario;
-	}
-	
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
-	}
-	
-	public String getSenha() {
-		return senha;
-	}
-	
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
-	
+	}	
     
 }

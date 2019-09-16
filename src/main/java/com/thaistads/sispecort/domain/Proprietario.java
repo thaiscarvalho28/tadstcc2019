@@ -1,15 +1,19 @@
 package com.thaistads.sispecort.domain;
 
-import javax.persistence.CascadeType;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Proprietario extends Pessoa{
 
 	private double prolabore;
-	private Fazenda fazenda;
+	
+	@OneToMany(targetEntity = Fazenda.class, mappedBy = "proprietario", fetch = FetchType.EAGER)
+	private List<Fazenda> fazenda;
 	
 	@Column
 	public double getProlabore() {
@@ -20,12 +24,11 @@ public class Proprietario extends Pessoa{
 		this.prolabore = prolabore;
 	}
 
-	@OneToOne(cascade = CascadeType.REMOVE, mappedBy = "proprietario")
-	public Fazenda getFazenda() {
+	public List<Fazenda> getFazenda() {
 		return fazenda;
 	}
 
-	public void setFazenda(Fazenda fazenda) {
+	public void setFazenda(List<Fazenda> fazenda) {
 		this.fazenda = fazenda;
 	}
 	
