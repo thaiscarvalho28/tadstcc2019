@@ -2,12 +2,10 @@ package com.thaistads.sispecort.domain;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,15 +21,16 @@ public class Fazenda{
 	private String nomeFazenda;
 	private int numDeRegistro;
 	
-	@ManyToOne()
-	private Proprietario proprietario;
-	
 	private String endereco;
 		
-	@ManyToOne(targetEntity = Lote.class)
-	@JsonProperty(access = Access.WRITE_ONLY)
+	@OneToMany(targetEntity = Lote.class)
+	//@JsonProperty(access = Access.WRITE_ONLY)
 	private List<Lote> lotes;
+	
+	
+	//-----Metodos-----//
 
+	
 	public Integer getIdFazenda() {
 		return idFazenda;
 	}
@@ -56,14 +55,6 @@ public class Fazenda{
 		this.numDeRegistro = numDeRegistro;
 	}
 
-	public Proprietario getProprietario() {
-		return proprietario;
-	}
-
-	public void setProprietario(Proprietario proprietario) {
-		this.proprietario = proprietario;
-	}
-
 	public String getEndereco() {
 		return endereco;
 	}
@@ -72,11 +63,9 @@ public class Fazenda{
 		this.endereco = endereco;
 	}
 
-	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "fazenda")
 	public List<Lote> getLotes() {
 		return lotes;
 	}
-
 
 	public void setLotes(List<Lote> lotes) {
 		this.lotes = lotes;

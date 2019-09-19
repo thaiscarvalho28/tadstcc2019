@@ -12,7 +12,7 @@ public class Proprietario extends Pessoa{
 
 	private double prolabore;
 	
-	@OneToMany(targetEntity = Fazenda.class, mappedBy = "proprietario", fetch = FetchType.EAGER)
+	@OneToMany(targetEntity = Fazenda.class, fetch = FetchType.EAGER)
 	private List<Fazenda> fazenda;
 	
 	@Column

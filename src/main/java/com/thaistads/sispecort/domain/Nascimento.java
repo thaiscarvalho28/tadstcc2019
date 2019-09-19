@@ -1,7 +1,5 @@
 package com.thaistads.sispecort.domain;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,11 +22,13 @@ public class Nascimento{
 	@JoinColumn(name = "id_pai", unique = true)
 	private GadoBovino idPai;
 	
-	private Date dataNascimento;
-	
 	@OneToOne()
 	@JoinColumn(name = "id_bezerro", unique = true)
 	private GadoBovino idBezerro;
+	
+	
+	//-----Metodos-----//
+	
 	
 	public Integer getIdNascimento() {
 		return idNascimento;
@@ -52,14 +52,6 @@ public class Nascimento{
 
 	public void setIdPai(GadoBovino idPai) {
 		this.idPai = idPai;
-	}
-	
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
 	}
 
 	public GadoBovino getIdBezerro() {

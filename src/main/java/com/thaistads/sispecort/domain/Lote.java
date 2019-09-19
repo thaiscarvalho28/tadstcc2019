@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,12 +29,12 @@ public class Lote{
 	private String tipoPastagem;
 	private double pesoTotalDoLote;
 	
-	@ManyToOne()
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private Fazenda fazenda;
-	
 	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "lote")
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private List<GadoBovino> gado_bovino;
+	
+	
+	//-----Metodos-----//
 
 	
 	public Integer getId() {
@@ -49,7 +48,7 @@ public class Lote{
 	public String getCodigoLote() {
 		return codigoLote;
 	}
-
+    
 	public void setCodigoLotee(String codigoLote) {
 		this.codigoLote = codigoLote;
 	}
@@ -101,20 +100,10 @@ public class Lote{
 	public void setPesoTotalDoLote(double pesoTotalDoLote) {
 		this.pesoTotalDoLote = pesoTotalDoLote;
 	}
-	
-	
-	public Fazenda getFazenda() {
-		return fazenda;
-	}
-
-	public void setFazenda(Fazenda fazenda) {
-		this.fazenda = fazenda;
-	}
 
 	public void setCodigoLote(String codigoLote) {
 		this.codigoLote = codigoLote;
 	}
-	
 	
 	public List<GadoBovino> getGado_bovino() {
 		return gado_bovino;

@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+
 
 @Entity
 public class CompraGado{
@@ -16,16 +16,22 @@ public class CompraGado{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idCompraGado;
-	private float precoCompra;
-	private float valorFrete;
-	private Date dataCompra;
 	
-	@OneToMany()
-	@JoinColumn(name = "id_gado_comprado", unique = true)
+	private float valorDaCompra;
+	private float valorDoFrete;
+	private Date dataDaCompra;
+	private int quantGadoComprado;
+	private String fornecedor;
+	
+	@OneToMany(targetEntity = GadoBovino.class)
 	private List<GadoBovino> idGadoComprado;
 	
 	private String anotacoes;
 	
+	
+	//-----Metodos-----//
+	
+
 	public Integer getIdCompraGado() {
 		return idCompraGado;
 	}
@@ -34,28 +40,44 @@ public class CompraGado{
 		this.idCompraGado = idCompraGado;
 	}
 
-	public float getPrecoCompra() {
-		return precoCompra;
+	public float getValorDaCompra() {
+		return valorDaCompra;
 	}
-	
-	public void setPrecoCompra(float precoCompra) {
-		this.precoCompra = precoCompra;
+
+	public void setValorDaCompra(float valorDaCompra) {
+		this.valorDaCompra = valorDaCompra;
 	}
-	
-	public float getValorFrete() {
-		return valorFrete;
+
+	public float getValorDoFrete() {
+		return valorDoFrete;
 	}
-	
-	public void setValorFrete(float valorFrete) {
-		this.valorFrete = valorFrete;
+
+	public void setValorDoFrete(float valorDoFrete) {
+		this.valorDoFrete = valorDoFrete;
 	}
-	
-	public Date getDataCompra() {
-		return dataCompra;
+
+	public Date getDataDaCompra() {
+		return dataDaCompra;
 	}
-	
-	public void setDataCompra(Date dataCompra) {
-		this.dataCompra = dataCompra;
+
+	public void setDataDaCompra(Date dataDaCompra) {
+		this.dataDaCompra = dataDaCompra;
+	}
+
+	public int getQuantGadoComprado() {
+		return quantGadoComprado;
+	}
+
+	public void setQuantGadoComprado(int quantGadoComprado) {
+		this.quantGadoComprado = quantGadoComprado;
+	}
+
+	public String getFornecedor() {
+		return fornecedor;
+	}
+
+	public void setFornecedor(String fornecedor) {
+		this.fornecedor = fornecedor;
 	}
 
 	public List<GadoBovino> getIdGadoComprado() {
@@ -74,5 +96,5 @@ public class CompraGado{
 		this.anotacoes = anotacoes;
 	}
 	
-	
+		
 }

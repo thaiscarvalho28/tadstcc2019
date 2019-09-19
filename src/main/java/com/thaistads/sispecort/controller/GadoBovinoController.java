@@ -22,7 +22,7 @@ public class GadoBovinoController {
 	GadoBovinoService gadoBovinoService;
 	
 	//############### Cadastrar ###############
-	@RequestMapping(value = URL + "/cadastcompgado", method = RequestMethod.POST,
+	@RequestMapping(value = URL + "/cadastgado", method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> cadastrarGadoBovino(@RequestBody GadoBovino gadoBov){
 		
@@ -35,7 +35,7 @@ public class GadoBovinoController {
 	}
 	
 	//############### Buscar ###############
-	@RequestMapping(value = URL + "/buscarcompgado/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = URL + "/buscargado/{id}", method = RequestMethod.GET)
 	public ResponseEntity<GadoBovino> buscarGadoBovino(@PathVariable int id) {
 		GadoBovino objGadoBov = gadoBovinoService.buscar(id);
 		return ResponseEntity.ok().body(objGadoBov);
