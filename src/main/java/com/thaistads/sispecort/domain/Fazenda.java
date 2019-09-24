@@ -8,9 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
-
 @Entity
 public class Fazenda{
 	
@@ -24,8 +21,13 @@ public class Fazenda{
 	private String endereco;
 		
 	@OneToMany(targetEntity = Lote.class)
-	//@JsonProperty(access = Access.WRITE_ONLY)
 	private List<Lote> lotes;
+	
+	@OneToMany(targetEntity = Funcionario.class)
+	private List<Funcionario> funcionarios;
+	
+	@OneToMany(targetEntity = Parceiros.class)
+	private List<Parceiros> parceiros;
 	
 	
 	//-----Metodos-----//

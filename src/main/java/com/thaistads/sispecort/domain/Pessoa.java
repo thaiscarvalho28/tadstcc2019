@@ -17,6 +17,10 @@ public class Pessoa {
     private String dataNascimento;
     private String endereco;
     
+    
+    //-----Metodos-----//
+    
+    
 	public Integer getIdPessoa() {
 		return idPessoa;
 	}

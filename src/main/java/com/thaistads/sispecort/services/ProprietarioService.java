@@ -19,7 +19,7 @@ public class ProprietarioService {
 		return objProprietario.orElse(null);
 	}
 	
-	public Proprietario cadastrarProprietario(Proprietario proprietario) {
+	public Proprietario cadastrar(Proprietario proprietario) {
 		return proprietarioRepository.save(proprietario);
 	}
 }

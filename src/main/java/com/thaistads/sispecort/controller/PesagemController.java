@@ -10,35 +10,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.thaistads.sispecort.domain.Proprietario;
-import com.thaistads.sispecort.services.ProprietarioService;
+import com.thaistads.sispecort.domain.Pesagem;
+import com.thaistads.sispecort.services.PesagemService;
 
 @RestController
-public class ProprietarioController {
+public class PesagemController {
 	
-	private final String URL = "/proprietario";
+	private final String URL = "/pesagem";
 	
 	@Autowired
-	ProprietarioService proprietarioService;
+	PesagemService pesagemService;
 	
 	//############### Cadastrar ###############
-	@RequestMapping(value = URL + "/cadastpropi", method = RequestMethod.POST,
+	@RequestMapping(value = URL + "/cadastpesagem", method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> cadastrarProprietario(@RequestBody Proprietario proprietario){
+	public ResponseEntity<?> cadastrarPesagem(@RequestBody Pesagem pesagem){
 		
-		Proprietario proprietarioCadastrado = proprietarioService.cadastrar(proprietario);
+		Pesagem pesagemCadastrada = pesagemService.cadastrar(pesagem);
 		
-		if(proprietarioCadastrado == null) {
+		if(pesagemCadastrada == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	//############### Buscar ###############
-	@RequestMapping(value = URL + "/buscarpropri/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Proprietario> buscarProprietario(@PathVariable int id) {
-		Proprietario objProprietario = proprietarioService.buscar(id);
-		return ResponseEntity.ok().body(objProprietario);
+	@RequestMapping(value = URL + "/buscarpesagem/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Pesagem> buscarPesagem(@PathVariable int id) {
+		Pesagem objPesagem = pesagemService.buscar(id);
+		return ResponseEntity.ok().body(objPesagem);
 		
 	}
 	

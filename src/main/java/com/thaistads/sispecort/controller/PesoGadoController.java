@@ -10,35 +10,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.thaistads.sispecort.domain.Proprietario;
-import com.thaistads.sispecort.services.ProprietarioService;
+import com.thaistads.sispecort.domain.PesoGado;
+import com.thaistads.sispecort.services.PesoGadoService;
 
 @RestController
-public class ProprietarioController {
+public class PesoGadoController {
 	
-	private final String URL = "/proprietario";
+	private final String URL = "/pesogado";
 	
 	@Autowired
-	ProprietarioService proprietarioService;
+	PesoGadoService pesoService;
 	
 	//############### Cadastrar ###############
-	@RequestMapping(value = URL + "/cadastpropi", method = RequestMethod.POST,
+	@RequestMapping(value = URL + "/cadastpeso", method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> cadastrarProprietario(@RequestBody Proprietario proprietario){
+	public ResponseEntity<?> cadastrarPeso(@RequestBody PesoGado peso){
 		
-		Proprietario proprietarioCadastrado = proprietarioService.cadastrar(proprietario);
+		PesoGado pesoCadastrado = pesoService.cadastrar(peso);
 		
-		if(proprietarioCadastrado == null) {
+		if(pesoCadastrado == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	//############### Buscar ###############
-	@RequestMapping(value = URL + "/buscarpropri/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Proprietario> buscarProprietario(@PathVariable int id) {
-		Proprietario objProprietario = proprietarioService.buscar(id);
-		return ResponseEntity.ok().body(objProprietario);
+	@RequestMapping(value = URL + "/buscarpeso/{id}", method = RequestMethod.GET)
+	public ResponseEntity<PesoGado> buscarPeso(@PathVariable int id) {
+		PesoGado objPeso = pesoService.buscar(id);
+		return ResponseEntity.ok().body(objPeso);
 		
 	}
 	

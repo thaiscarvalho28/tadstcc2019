@@ -112,8 +112,5 @@ public class Lote{
 	public void setGado_bovino(List<GadoBovino> gado_bovino) {
 		this.gado_bovino = gado_bovino;
 	}
-	
-	
-	
-	
+
 }

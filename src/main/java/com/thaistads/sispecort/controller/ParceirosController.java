@@ -10,35 +10,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.thaistads.sispecort.domain.Proprietario;
-import com.thaistads.sispecort.services.ProprietarioService;
+import com.thaistads.sispecort.domain.Parceiros;
+import com.thaistads.sispecort.services.ParceirosService;
 
 @RestController
-public class ProprietarioController {
+public class ParceirosController {
 	
-	private final String URL = "/proprietario";
+	private final String URL = "/parceiros";
 	
 	@Autowired
-	ProprietarioService proprietarioService;
+	ParceirosService parceiroService;
 	
 	//############### Cadastrar ###############
-	@RequestMapping(value = URL + "/cadastpropi", method = RequestMethod.POST,
+	@RequestMapping(value = URL + "/cadasparceiro", method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> cadastrarProprietario(@RequestBody Proprietario proprietario){
+	public ResponseEntity<?> cadastrarParceiro(@RequestBody Parceiros parceiro){
 		
-		Proprietario proprietarioCadastrado = proprietarioService.cadastrar(proprietario);
+		Parceiros parceiroCadastrado = parceiroService.cadastrar(parceiro);
 		
-		if(proprietarioCadastrado == null) {
+		if(parceiroCadastrado == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	//############### Buscar ###############
-	@RequestMapping(value = URL + "/buscarpropri/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Proprietario> buscarProprietario(@PathVariable int id) {
-		Proprietario objProprietario = proprietarioService.buscar(id);
-		return ResponseEntity.ok().body(objProprietario);
+	@RequestMapping(value = URL + "/buscarparceiro/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Parceiros> buscarParceiro(@PathVariable int id) {
+		Parceiros objParceiro = parceiroService.buscar(id);
+		return ResponseEntity.ok().body(objParceiro);
 		
 	}
 	
