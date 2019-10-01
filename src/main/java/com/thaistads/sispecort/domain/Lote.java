@@ -28,6 +28,7 @@ public class Lote{
 	private int capacidadeDeGado;
 	private String tipoPastagem;
 	private double pesoTotalDoLote;
+	//private boolean status;	
 	
 	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "lote")
 	@JsonProperty(access = Access.WRITE_ONLY)

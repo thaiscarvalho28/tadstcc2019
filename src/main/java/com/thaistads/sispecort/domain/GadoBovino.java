@@ -19,7 +19,7 @@ public class GadoBovino {
 	private Integer id;
 	
 	private int numeroBrinco;
-	private String corBrinco;
+	//private String corBrinco;
 	private String categoriaAnimal;
 	private String sexo;
 	private float pesoinicial;
@@ -55,13 +55,13 @@ public class GadoBovino {
 		this.numeroBrinco = numeroBrinco;
 	}
 	
-	public String getCorBrinco() {
-		return corBrinco;
-	}
-	
-	public void setCorBrinco(String corBrinco) {
-		this.corBrinco = corBrinco;
-	}
+//	public String getCorBrinco() {
+//		return corBrinco;
+//	}
+//	
+//	public void setCorBrinco(String corBrinco) {
+//		this.corBrinco = corBrinco;
+//	}
 	
 	public String getCategoriaAnimal() {
 		return categoriaAnimal;

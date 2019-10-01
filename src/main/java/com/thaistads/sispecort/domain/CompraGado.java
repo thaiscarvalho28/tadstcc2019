@@ -20,13 +20,12 @@ public class CompraGado{
 	private float valorDaCompra;
 	private float valorDoFrete;
 	private Date dataDaCompra;
-	private int quantGadoComprado;
 	private String fornecedor;
+	private String anotacoes;
 	
 	@OneToMany(targetEntity = GadoBovino.class)
 	private List<GadoBovino> idGadoComprado;
 	
-	private String anotacoes;
 	
 	
 	//-----Metodos-----//
@@ -62,14 +61,6 @@ public class CompraGado{
 
 	public void setDataDaCompra(Date dataDaCompra) {
 		this.dataDaCompra = dataDaCompra;
-	}
-
-	public int getQuantGadoComprado() {
-		return quantGadoComprado;
-	}
-
-	public void setQuantGadoComprado(int quantGadoComprado) {
-		this.quantGadoComprado = quantGadoComprado;
 	}
 
 	public String getFornecedor() {
