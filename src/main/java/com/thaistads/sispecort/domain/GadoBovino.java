@@ -19,13 +19,13 @@ public class GadoBovino {
 	private Integer id;
 	
 	private int numeroBrinco;
-	//private String corBrinco;
 	private String categoriaAnimal;
 	private String sexo;
 	private float pesoinicial;
 	private String raca;
 	private String pelagem;
 	private Date dataNascimento;
+	private boolean status = true;
 	
 	@ManyToOne()
 	@JsonProperty(access = Access.WRITE_ONLY) 
@@ -54,14 +54,6 @@ public class GadoBovino {
 	public void setNumeroBrinco(int numeroBrinco) {
 		this.numeroBrinco = numeroBrinco;
 	}
-	
-//	public String getCorBrinco() {
-//		return corBrinco;
-//	}
-//	
-//	public void setCorBrinco(String corBrinco) {
-//		this.corBrinco = corBrinco;
-//	}
 	
 	public String getCategoriaAnimal() {
 		return categoriaAnimal;
@@ -110,6 +102,14 @@ public class GadoBovino {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 	
-	
+		
 }

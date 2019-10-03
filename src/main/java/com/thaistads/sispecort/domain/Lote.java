@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -28,10 +29,10 @@ public class Lote{
 	private int capacidadeDeGado;
 	private String tipoPastagem;
 	private double pesoTotalDoLote;
-	//private boolean status;	
+	private boolean status = true;
 	
 	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "lote")
-	@JsonProperty(access = Access.WRITE_ONLY)
+	//@JsonProperty(access = Access.WRITE_ONLY)
 	private List<GadoBovino> gado_bovino;
 	
 	
@@ -112,6 +113,14 @@ public class Lote{
 
 	public void setGado_bovino(List<GadoBovino> gado_bovino) {
 		this.gado_bovino = gado_bovino;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 }

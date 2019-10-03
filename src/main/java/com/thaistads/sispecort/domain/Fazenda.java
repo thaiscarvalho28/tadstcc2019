@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,6 +21,9 @@ public class Fazenda{
 	private int numDeRegistro;
 	
 	private String endereco;
+	
+	@ManyToOne(targetEntity = Proprietario.class)
+	private Proprietario proprietario;
 		
 	@OneToMany(targetEntity = Lote.class)
 	private List<Lote> lotes;
@@ -63,6 +68,30 @@ public class Fazenda{
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	public Proprietario getProprietario() {
+		return proprietario;
+	}
+
+	public void setProprietario(Proprietario proprietario) {
+		this.proprietario = proprietario;
+	}
+
+	public List<Funcionario> getFuncionarios() {
+		return funcionarios;
+	}
+
+	public void setFuncionarios(List<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
+	}
+
+	public List<Parceiros> getParceiros() {
+		return parceiros;
+	}
+
+	public void setParceiros(List<Parceiros> parceiros) {
+		this.parceiros = parceiros;
 	}
 
 	public List<Lote> getLotes() {

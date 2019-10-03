@@ -27,7 +27,6 @@ public class CompraGado{
 	private List<GadoBovino> idGadoComprado;
 	
 	
-	
 	//-----Metodos-----//
 	
 
