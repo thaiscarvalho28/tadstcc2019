@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -25,14 +24,14 @@ public class Fazenda{
 	@ManyToOne(targetEntity = Proprietario.class)
 	private Proprietario proprietario;
 		
-	@OneToMany(targetEntity = Lote.class)
-	private List<Lote> lotes;
+//	@OneToMany(targetEntity = Lote.class)
+//	private List<Lote> lotes;
 	
 	@OneToMany(targetEntity = Funcionario.class)
 	private List<Funcionario> funcionarios;
 	
-	@OneToMany(targetEntity = Parceiros.class)
-	private List<Parceiros> parceiros;
+//	@OneToMany(targetEntity = Parceiros.class)
+//	private List<Parceiros> parceiros;
 	
 	
 	//-----Metodos-----//
@@ -86,20 +85,20 @@ public class Fazenda{
 		this.funcionarios = funcionarios;
 	}
 
-	public List<Parceiros> getParceiros() {
-		return parceiros;
-	}
+//	public List<Parceiros> getParceiros() {
+//		return parceiros;
+//	}
+//
+//	public void setParceiros(List<Parceiros> parceiros) {
+//		this.parceiros = parceiros;
+//	}
 
-	public void setParceiros(List<Parceiros> parceiros) {
-		this.parceiros = parceiros;
-	}
-
-	public List<Lote> getLotes() {
-		return lotes;
-	}
-
-	public void setLotes(List<Lote> lotes) {
-		this.lotes = lotes;
-	}
+//	public List<Lote> getLotes() {
+//		return lotes;
+//	}
+//
+//	public void setLotes(List<Lote> lotes) {
+//		this.lotes = lotes;
+//	}
 	
 }

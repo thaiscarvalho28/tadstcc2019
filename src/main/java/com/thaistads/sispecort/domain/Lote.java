@@ -1,6 +1,5 @@
 package com.thaistads.sispecort.domain;
 
-
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,12 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
-
 
 @Entity 
 public class Lote{
@@ -31,8 +27,10 @@ public class Lote{
 	private double pesoTotalDoLote;
 	private boolean status = true;
 	
-	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "lote")
-	//@JsonProperty(access = Access.WRITE_ONLY)
+	@ManyToOne(targetEntity = Fazenda.class, cascade = CascadeType.REMOVE)
+	private Fazenda fazenda;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "lote")
 	private List<GadoBovino> gado_bovino;
 	
 	
@@ -121,6 +119,14 @@ public class Lote{
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	public Fazenda getFazenda() {
+		return fazenda;
+	}
+
+	public void setFazenda(Fazenda fazenda) {
+		this.fazenda = fazenda;
 	}
 
 }

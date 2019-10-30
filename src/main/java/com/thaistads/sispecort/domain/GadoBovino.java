@@ -2,6 +2,7 @@ package com.thaistads.sispecort.domain;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,9 +28,13 @@ public class GadoBovino {
 	private Date dataNascimento;
 	private boolean status = true;
 	
-	@ManyToOne()
-	@JsonProperty(access = Access.WRITE_ONLY) 
+	//@JsonIgnore
+	@ManyToOne(cascade = CascadeType.REMOVE) 
 	private Lote lote;
+	
+	
+	//-----Metodos-----//
+	
 	
 	public Integer getId() {
 		return id;

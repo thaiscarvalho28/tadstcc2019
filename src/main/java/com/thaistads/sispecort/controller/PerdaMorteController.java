@@ -33,6 +33,7 @@ public class PerdaMorteController {
 		if(perdaCadastrada == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
+		
 		return new ResponseEntity<>(HttpStatus.CREATED);
 		
 	}

@@ -8,9 +8,6 @@ public class Proprietario extends Pessoa{
 
 	private double prolabore;
 	
-//	@OneToMany(targetEntity = Fazenda.class, fetch = FetchType.EAGER)
-//	private List<Fazenda> fazenda;
-	
 	@Column
 	public double getProlabore() {
 		return prolabore;
@@ -18,16 +15,6 @@ public class Proprietario extends Pessoa{
 	
 	public void setProlabore(double prolabore) {
 		this.prolabore = prolabore;
-	}
-
-//	public List<Fazenda> getFazenda() {
-//		return fazenda;
-//	}
-//
-//	public void setFazenda(List<Fazenda> fazenda) {
-//		this.fazenda = fazenda;
-//	}
-	
-	
+	}	
 
 }

@@ -43,6 +43,13 @@ public class CompraGadoController {
 		
 	}
 	
-	//############### Desativar ###############
+	//############### Editar ###############
+	@RequestMapping(value = URL + "/editarcomp", method = RequestMethod.PUT)
+	public ResponseEntity<?> editarCompra(@RequestBody CompraGado compGado) {
+		compGadoService.editar(compGado);
+		return new ResponseEntity<>(HttpStatus.CREATED);
+	}
+	
+	//############### Excluir ###############
 	
 }

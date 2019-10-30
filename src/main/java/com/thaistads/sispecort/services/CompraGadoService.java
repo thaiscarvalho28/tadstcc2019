@@ -23,4 +23,12 @@ public class CompraGadoService {
 		return compraGadoRepository.save(compGado);
 	}
 	
+	public CompraGado editar(CompraGado compGado) {
+		return compraGadoRepository.save(compGado);
+	}
+	
+	public void excluir(Integer id) {
+		compraGadoRepository.deleteById(id);
+	}
+	
 }

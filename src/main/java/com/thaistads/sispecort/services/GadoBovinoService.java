@@ -23,4 +23,7 @@ public class GadoBovinoService {
 		return gadoBovinoRepository.save(gadoBov);
 	}
 	
+	public GadoBovino atualizar(GadoBovino gadoBov) {
+		return gadoBovinoRepository.save(gadoBov);
+	}
 }

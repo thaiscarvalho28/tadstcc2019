@@ -42,6 +42,17 @@ public class GadoBovinoController {
 		
 	}
 	
-	//############### Desativar ###############
+	//############### Atualizar ###############
+	@RequestMapping(value = URL + "/atualigado", method = RequestMethod.POST,
+			consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> atualizarGadoBovino(@RequestBody GadoBovino gadoBov){
+		
+		GadoBovino gadoBovAtualizado = gadoBovinoService.atualizar(gadoBov);
+		
+		if(gadoBovAtualizado == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<>(HttpStatus.CREATED);
+	}
 	
 }
