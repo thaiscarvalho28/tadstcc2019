@@ -15,12 +15,8 @@ public class Nascimento{
 	private Integer idNascimento;
 	
 	@OneToOne()
-	@JoinColumn(name = "id_mae", unique = true)
-	private GadoBovino idMae;
-	
-	@OneToOne()
-	@JoinColumn(name = "id_pai", unique = true)
-	private GadoBovino idPai;
+	@JoinColumn(name = "id_ciclo_repro", unique = true)
+	private CicloReprodutivo idCicloReprodutivo;
 	
 	@OneToOne()
 	@JoinColumn(name = "id_bezerro", unique = true)
@@ -38,20 +34,12 @@ public class Nascimento{
 		this.idNascimento = idNascimento;
 	}
 
-	public GadoBovino getIdMae() {
-		return idMae;
+	public CicloReprodutivo getIdCicloReprodutivo() {
+		return idCicloReprodutivo;
 	}
 
-	public void setIdMae(GadoBovino idMae) {
-		this.idMae = idMae;
-	}
-
-	public GadoBovino getIdPai() {
-		return idPai;
-	}
-
-	public void setIdPai(GadoBovino idPai) {
-		this.idPai = idPai;
+	public void setIdCicloReprodutivo(CicloReprodutivo idCicloReprodutivo) {
+		this.idCicloReprodutivo = idCicloReprodutivo;
 	}
 
 	public GadoBovino getIdBezerro() {

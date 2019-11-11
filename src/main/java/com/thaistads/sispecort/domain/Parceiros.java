@@ -5,8 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.thaistads.sispecort.enums.TipoDeParceiros;
-
 @Entity
 public class Parceiros {
 	
@@ -15,12 +13,12 @@ public class Parceiros {
 	private Integer idParceiro;
 	
 	private String nomeCompleto;
-	private TipoDeParceiros tipo;
+	private String tipo;
 	private String email;
 	private String telefoneComercial;
 	private String telefonePessoal;
 	private String endereco;
-	private boolean status;
+	private boolean status = true;
 	
 	
 	//-----Metodos-----//
@@ -42,11 +40,11 @@ public class Parceiros {
 		this.nomeCompleto = nomeCompleto;
 	}
 	
-	public TipoDeParceiros getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
 	
-	public void setTipo(TipoDeParceiros tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 	

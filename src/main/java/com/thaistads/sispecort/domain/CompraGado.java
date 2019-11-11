@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -20,7 +21,10 @@ public class CompraGado{
 	private float valorDaCompra;
 	private float valorDoFrete;
 	private Date dataDaCompra;
-	private String fornecedor;
+	
+	@OneToOne()
+	private Parceiros fornecedor;
+	
 	private String anotacoes;
 	
 	@OneToMany(targetEntity = GadoBovino.class)
@@ -62,11 +66,11 @@ public class CompraGado{
 		this.dataDaCompra = dataDaCompra;
 	}
 
-	public String getFornecedor() {
+	public Parceiros getFornecedor() {
 		return fornecedor;
 	}
 
-	public void setFornecedor(String fornecedor) {
+	public void setFornecedor(Parceiros fornecedor) {
 		this.fornecedor = fornecedor;
 	}
 

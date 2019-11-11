@@ -1,5 +1,6 @@
 package com.thaistads.sispecort.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,10 @@ public class PesagemService {
 	public Pesagem buscar(Integer id) {
 		Optional<Pesagem> objPesagem = pesagemRepository.findById(id);
 		return objPesagem.orElse(null);
+	}
+	
+	public List<Pesagem> buscarTodos(){
+		return pesagemRepository.findAll();
 	}
 	
 	public Pesagem cadastrar(Pesagem pesagem) {

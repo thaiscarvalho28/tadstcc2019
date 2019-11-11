@@ -1,5 +1,7 @@
 package com.thaistads.sispecort.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -40,6 +42,12 @@ public class GadoBovinoController {
 		GadoBovino objGadoBov = gadoBovinoService.buscar(id);
 		return ResponseEntity.ok().body(objGadoBov);
 		
+	}
+	
+	@RequestMapping(value = URL + "/buscatodos", method = RequestMethod.GET)
+	public ResponseEntity<List<GadoBovino>> buscarTodos(){
+		List<GadoBovino> listaDeGado = gadoBovinoService.buscarTodos();
+		return ResponseEntity.ok().body(listaDeGado);
 	}
 	
 	//############### Atualizar ###############

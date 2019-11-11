@@ -1,5 +1,6 @@
 package com.thaistads.sispecort.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,10 @@ public class FuncionarioService {
 	public Funcionario buscar(Integer id) {
 		Optional<Funcionario> objFuncionario = funcionarioRepository.findById(id);
 		return objFuncionario.orElse(null);
+	}
+	
+	public List<Funcionario> buscarTodos(){
+		return funcionarioRepository.findAll();
 	}
 	
 	public Funcionario cadastrarFuncionario(Funcionario funcionario) {

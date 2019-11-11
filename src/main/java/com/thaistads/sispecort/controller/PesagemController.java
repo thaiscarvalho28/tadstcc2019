@@ -1,5 +1,7 @@
 package com.thaistads.sispecort.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -39,7 +41,12 @@ public class PesagemController {
 	public ResponseEntity<Pesagem> buscarPesagem(@PathVariable int id) {
 		Pesagem objPesagem = pesagemService.buscar(id);
 		return ResponseEntity.ok().body(objPesagem);
-		
+	}
+	
+	@RequestMapping(value = URL + "/todospesos", method = RequestMethod.GET)
+	public ResponseEntity<List<Pesagem>> buscarTodasPesagens() {
+		List<Pesagem> listaPesagens = pesagemService.buscarTodos();
+		return ResponseEntity.ok().body(listaPesagens);
 	}
 	
 }

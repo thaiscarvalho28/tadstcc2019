@@ -1,5 +1,6 @@
 package com.thaistads.sispecort.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,10 @@ public class PerdaMorteService {
 	public PerdaMorte buscar(Integer id) {
 		Optional<PerdaMorte> objPerda = perdaRepository.findById(id);
 		return objPerda.orElse(null);
+	}
+	
+	public List<PerdaMorte> buscarTodos(){
+		return perdaRepository.findAll();
 	}
 	
 	public PerdaMorte cadastrar(PerdaMorte perda) {

@@ -1,5 +1,7 @@
 package com.thaistads.sispecort.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -39,6 +41,13 @@ public class FuncionarioController {
 	public ResponseEntity<Funcionario> buscarFuncionario(@PathVariable int id) {
 		Funcionario objFuncionario = funcionarioService.buscar(id);
 		return ResponseEntity.ok().body(objFuncionario);
+		
+	}
+	
+	@RequestMapping(value = URL + "/todosfuncio", method = RequestMethod.GET)
+	public ResponseEntity<List<Funcionario>> buscarTodosFuncionario() {
+		List<Funcionario> listaFuncionarios = funcionarioService.buscarTodos();
+		return ResponseEntity.ok().body(listaFuncionarios);
 		
 	}
 	

@@ -1,5 +1,7 @@
 package com.thaistads.sispecort.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -37,9 +39,16 @@ public class CompraGadoController {
 	
 	//############### Buscar ###############
 	@RequestMapping(value = URL + "/buscarcompgado/{id}", method = RequestMethod.GET)
-	public ResponseEntity<CompraGado> buscarNascimento(@PathVariable int id) {
+	public ResponseEntity<CompraGado> buscarCompraGado(@PathVariable int id) {
 		CompraGado objCompGado = compGadoService.buscar(id);
 		return ResponseEntity.ok().body(objCompGado);
+		
+	}
+	
+	@RequestMapping(value = URL + "/todascompras", method = RequestMethod.GET)
+	public ResponseEntity<List<CompraGado>> buscarTodasCompras() {
+		List<CompraGado> listaCompra = compGadoService.buscarTodos();
+		return ResponseEntity.ok().body(listaCompra);
 		
 	}
 	

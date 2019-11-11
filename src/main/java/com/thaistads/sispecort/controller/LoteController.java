@@ -1,5 +1,7 @@
 package com.thaistads.sispecort.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -39,6 +41,13 @@ public class LoteController {
 	public ResponseEntity<Lote> buscarLote(@PathVariable int id) {
 		Lote objLote = loteService.buscar(id);
 		return ResponseEntity.ok().body(objLote);
+		
+	}
+	
+	@RequestMapping(value = URL + "/listalotes", method = RequestMethod.GET)
+	public ResponseEntity<List<Lote>> buscarLote() {
+		List<Lote> listaLote = loteService.buscarTodos();
+		return ResponseEntity.ok().body(listaLote);
 		
 	}
 	

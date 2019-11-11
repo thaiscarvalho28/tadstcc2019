@@ -3,6 +3,7 @@ package com.thaistads.sispecort.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.thaistads.sispecort.domain.GadoBovino;
@@ -17,6 +18,10 @@ public class GadoBovinoService {
 	public GadoBovino buscar(Integer id){
 		Optional<GadoBovino> objGadoBov = gadoBovinoRepository.findById(id);
 		return objGadoBov.orElse(null);
+	}
+	
+	public List<GadoBovino> buscarTodos() {
+		return gadoBovinoRepository.findAll();
 	}
 	
 	public GadoBovino cadastrar(GadoBovino gadoBov) {

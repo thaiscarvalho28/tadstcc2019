@@ -16,8 +16,6 @@ public class PesoGado {
 	@ManyToOne()
 	private GadoBovino idGado;
 	
-//	@ManyToOne()
-//	private Pesagem idPesagem;
 	private float peso;
 	
 	

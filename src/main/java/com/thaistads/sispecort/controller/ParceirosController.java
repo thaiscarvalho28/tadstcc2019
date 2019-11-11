@@ -1,5 +1,7 @@
 package com.thaistads.sispecort.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -39,6 +41,13 @@ public class ParceirosController {
 	public ResponseEntity<Parceiros> buscarParceiro(@PathVariable int id) {
 		Parceiros objParceiro = parceiroService.buscar(id);
 		return ResponseEntity.ok().body(objParceiro);
+		
+	}
+	
+	@RequestMapping(value = URL + "/buscartodosparca", method = RequestMethod.GET)
+	public ResponseEntity<List<Parceiros>> buscarTodos() {
+		List<Parceiros> listaParceiros = parceiroService.buscarTodos();
+		return ResponseEntity.ok().body(listaParceiros);
 		
 	}
 	
