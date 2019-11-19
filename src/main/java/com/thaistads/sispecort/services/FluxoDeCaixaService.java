@@ -28,4 +28,12 @@ public class FluxoDeCaixaService {
 		return caixaRepository.save(caixa);
 	}
 	
+	public List<FluxoDeCaixa> filtrarData(int mes, int ano){
+		return caixaRepository.getDataMesAno(mes, ano);
+	}
+	
+	public List<FluxoDeCaixa> filtrarDataAno(int ano){
+		return caixaRepository.getAno(ano);
+	}
+	
 }

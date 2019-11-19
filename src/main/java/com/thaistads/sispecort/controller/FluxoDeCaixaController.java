@@ -51,4 +51,18 @@ public class FluxoDeCaixaController {
 		
 	}
 	
+	//############### Filtrar data ###############
+	@RequestMapping(value = URL + "/filtrardate/{mes}/{ano}", method = RequestMethod.GET)
+	public ResponseEntity<List<FluxoDeCaixa>> filtrarData(@PathVariable int mes, @PathVariable int ano) {
+		List<FluxoDeCaixa> objData = caixaService.filtrarData(mes, ano);
+		return ResponseEntity.ok().body(objData);
+		
+	}
+	
+	@RequestMapping(value = URL + "/filtrardate/{ano}", method = RequestMethod.GET)
+	public ResponseEntity<List<FluxoDeCaixa>> filtrarPorAno(@PathVariable int ano) {
+		List<FluxoDeCaixa> objData = caixaService.filtrarDataAno(ano);
+		return ResponseEntity.ok().body(objData);
+		
+	}
 }

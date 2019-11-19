@@ -9,5 +9,6 @@ import com.thaistads.sispecort.domain.Parceiros;
 
 public interface ParceirosRepository extends JpaRepository<Parceiros, Integer>{
 	
-	@Query("SELECT nomeCompleto FROM Parceiros") List<Parceiros> getAllParceiros();
+	@Query(value = "SELECT p from Parceiros p order by p.nomeCompleto asc") 
+		List<Parceiros> getAllParceiros();
 }

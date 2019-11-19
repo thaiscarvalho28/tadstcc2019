@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @Entity
@@ -28,7 +28,7 @@ public class GadoBovino {
 	private Date dataNascimento;
 	private boolean status = true;
 	
-	@JsonIgnore
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@ManyToOne(cascade = CascadeType.REMOVE) 
 	private Lote lote;
 	
@@ -116,5 +116,4 @@ public class GadoBovino {
 		this.status = status;
 	}
 	
-		
 }

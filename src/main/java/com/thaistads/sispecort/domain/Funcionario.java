@@ -9,7 +9,6 @@ public class Funcionario extends Pessoa {
     private String cargo;
     private String dataContratacao;
     private double valorSalario;
-    //private Status status;
     
     @Column
 	public String getCargo() {
