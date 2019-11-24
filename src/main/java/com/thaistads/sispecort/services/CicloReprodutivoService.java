@@ -28,4 +28,11 @@ public class CicloReprodutivoService {
 		return cicloRepository.save(ciclo);
 	}
 	
+	public List<CicloReprodutivo> filtraConcluidos(){
+		return cicloRepository.getAllCicloConcluidos();
+	}
+	
+	public List<CicloReprodutivo> filtraAtivos(){
+		return cicloRepository.getAllCicloAtivos();
+	}
 }

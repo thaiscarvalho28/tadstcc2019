@@ -31,4 +31,12 @@ public class GadoBovinoService {
 	public GadoBovino atualizar(GadoBovino gadoBov) {
 		return gadoBovinoRepository.save(gadoBov);
 	}
+	
+	public List<GadoBovino> getTodasFemeas(){
+		return gadoBovinoRepository.getAllFemeas();
+	}
+	
+	public List<GadoBovino> getTodosMachos(){
+		return gadoBovinoRepository.getAllMachos();
+	}
 }

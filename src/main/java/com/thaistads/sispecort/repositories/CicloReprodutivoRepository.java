@@ -12,6 +12,12 @@ import com.thaistads.sispecort.domain.CicloReprodutivo;
 @Repository
 public interface CicloReprodutivoRepository extends JpaRepository<CicloReprodutivo, Integer>{
 	
-	@Query("SELECT idCiclo FROM CicloReprodutivo") List<CicloReprodutivo> getAlCicloReprodutivos();
+	@Query("SELECT idCiclo FROM CicloReprodutivo") 
+		List<CicloReprodutivo> getAlCicloReprodutivos();
 	
+	@Query("SELECT c FROM CicloReprodutivo c WHERE c.status = 'false'") 
+		List<CicloReprodutivo> getAllCicloConcluidos();
+	
+	@Query("SELECT c FROM CicloReprodutivo c WHERE c.status = 'true'") 
+	List<CicloReprodutivo> getAllCicloAtivos();
 }

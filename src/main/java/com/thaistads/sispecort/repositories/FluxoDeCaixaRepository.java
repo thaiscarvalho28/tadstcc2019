@@ -21,8 +21,9 @@ public interface FluxoDeCaixaRepository extends JpaRepository<FluxoDeCaixa, Inte
 	@Query("SELECT dt FROM FluxoDeCaixa dt WHERE EXTRACT(YEAR from dt.data) = :ano")
 	public List<FluxoDeCaixa> getAno(@Param("ano") int ano);
 	
+	
 	/* SELECT * FROM `fluxo_de_caixa` WHERE EXTRACT(MONTH from data) = 11 AND EXTRACT(YEAR from data) = 2019
-	 * SELECT data, id_caixa, EXTRACT(YEAR_MONTH from data) FROM fluxo_de_caixa
-	 * SELECT data, id_caixa, EXTRACT(MONTH from data), EXTRACT(YEAR from data) FROM fluxo_de_caixa*/
+	 * SELECT MIN(data), MAX(data) FROM `fluxo_de_caixa`
+	 * SELECT data, id_caixa, EXTRACT(YEAR_MONTH from data) FROM fluxo_de_caixa*/
 	
 }

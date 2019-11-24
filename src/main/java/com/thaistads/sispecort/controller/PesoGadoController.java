@@ -24,14 +24,14 @@ public class PesoGadoController {
 	//############### Cadastrar ###############
 	@RequestMapping(value = URL + "/cadastpeso", method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> cadastrarPeso(@RequestBody PesoGado peso){
+	public ResponseEntity<PesoGado> cadastrarPeso(@RequestBody PesoGado peso){
 		
 		PesoGado pesoCadastrado = pesoService.cadastrar(peso);
 		
 		if(pesoCadastrado == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<>(HttpStatus.CREATED);
+		return new ResponseEntity<>(pesoCadastrado, HttpStatus.CREATED);
 	}
 	
 	//############### Buscar ###############

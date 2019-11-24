@@ -26,14 +26,16 @@ public class LoteController {
 	//############### Cadastrar ###############
 	@RequestMapping(value = URL + "/cadastlote", method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> cadastrarLote(@RequestBody Lote lote){
+	public ResponseEntity<String> cadastrarLote(@RequestBody Lote lote){
 		
 		Lote loteCadastrado = loteService.cadastrarLote(lote);
 		
 		if(loteCadastrado == null) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+		            .body("Não foi possivel realizar o cadastro!");
 		}
-		return new ResponseEntity<>(HttpStatus.CREATED);
+		return ResponseEntity.status(HttpStatus.CREATED)
+		        .body("Lote cadastrado com sucesso.");
 	}
 	
 	//############### Buscar ###############

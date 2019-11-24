@@ -26,14 +26,16 @@ public class GadoBovinoController {
 	//############### Cadastrar ###############
 	@RequestMapping(value = URL + "/cadastgado", method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> cadastrarGadoBovino(@RequestBody GadoBovino gadoBov){
+	public ResponseEntity<String> cadastrarGadoBovino(@RequestBody GadoBovino gadoBov){
 		
 		GadoBovino gadoBovCadastrada = gadoBovinoService.cadastrar(gadoBov);
 		
 		if(gadoBovCadastrada == null) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+		            .body("Não foi possivel realizar o cadastro!");
 		}
-		return new ResponseEntity<>(HttpStatus.CREATED);
+		return ResponseEntity.status(HttpStatus.CREATED)
+		        .body("Animal cadastrado com sucesso.");
 	}
 	
 	//############### Buscar ###############
@@ -48,6 +50,18 @@ public class GadoBovinoController {
 	public ResponseEntity<List<GadoBovino>> buscarTodos(){
 		List<GadoBovino> listaDeGado = gadoBovinoService.buscarTodos();
 		return ResponseEntity.ok().body(listaDeGado);
+	}
+	
+	@RequestMapping(value = URL + "/filtrafemeas", method = RequestMethod.GET)
+	public ResponseEntity<List<GadoBovino>> buscarTodasFemeas(){
+		List<GadoBovino> listaDeFemeas = gadoBovinoService.getTodasFemeas();
+		return ResponseEntity.ok().body(listaDeFemeas);
+	}
+	
+	@RequestMapping(value = URL + "/filtramachos", method = RequestMethod.GET)
+	public ResponseEntity<List<GadoBovino>> buscarTodasMachos(){
+		List<GadoBovino> listaDeMachos = gadoBovinoService.getTodosMachos();
+		return ResponseEntity.ok().body(listaDeMachos);
 	}
 	
 	//############### Atualizar ###############

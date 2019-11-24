@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -15,7 +16,14 @@ public class CicloReprodutivo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idCiclo;
 	
-	private boolean situacao;
+	@ManyToOne()
+	private GadoBovino idTouroUsado;
+	
+	@OneToOne()
+	private GadoBovino idFemeaUsada;
+	
+	private String situacaoDaFemea;
+	private int diasAposUltimoParto;
 	private Date dataPrevistaParto;
 	
 	@OneToOne()
@@ -24,6 +32,9 @@ public class CicloReprodutivo {
 	@OneToOne()
 	private Parto idParto;
 	
+	private boolean status = true;
+	
+	/* <--- Metodos getter e setters ---> */
 	
 	public Integer getIdCiclo() {
 		return idCiclo;
@@ -33,12 +44,44 @@ public class CicloReprodutivo {
 		this.idCiclo = idCiclo;
 	}
 	
-	public boolean isSituacao() {
-		return situacao;
+	public GadoBovino getIdTouroUsado() {
+		return idTouroUsado;
 	}
 	
-	public void setSituacao(boolean situacao) {
-		this.situacao = situacao;
+	public void setIdTouroUsado(GadoBovino idTouroUsado) {
+		this.idTouroUsado = idTouroUsado;
+	}
+	
+	public GadoBovino getIdFemeaUsada() {
+		return idFemeaUsada;
+	}
+	
+	public void setIdFemeaUsada(GadoBovino idFemeaUsada) {
+		this.idFemeaUsada = idFemeaUsada;
+	}
+	
+	public String getSituacaoDaFemea() {
+		return situacaoDaFemea;
+	}
+
+	public void setSituacaoDaFemea(String situacaoDaFemea) {
+		this.situacaoDaFemea = situacaoDaFemea;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public int getDiasAposUltimoParto() {
+		return diasAposUltimoParto;
+	}
+
+	public void setDiasAposUltimoParto(int diasAposUltimoParto) {
+		this.diasAposUltimoParto = diasAposUltimoParto;
 	}
 	
 	public Date getDataPrevistaParto() {

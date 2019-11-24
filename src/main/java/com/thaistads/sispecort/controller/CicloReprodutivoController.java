@@ -51,4 +51,18 @@ public class CicloReprodutivoController {
 		
 	}
 	
+	@RequestMapping(value = URL + "/concluidos", method = RequestMethod.GET)
+	public ResponseEntity<List<CicloReprodutivo>> buscarCiclosConcluidos() {
+		List<CicloReprodutivo> listaCiclosConcluidos = cicloService.filtraConcluidos();
+		return ResponseEntity.ok().body(listaCiclosConcluidos);
+		
+	}
+	
+	@RequestMapping(value = URL + "/ativos", method = RequestMethod.GET)
+	public ResponseEntity<List<CicloReprodutivo>> buscarCiclosAtivos() {
+		List<CicloReprodutivo> listaCiclosAtivos = cicloService.filtraAtivos();
+		return ResponseEntity.ok().body(listaCiclosAtivos);
+		
+	}
+	
 }
